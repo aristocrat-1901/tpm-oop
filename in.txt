@@ -1,0 +1,10 @@
+1
+абв
+2
+abcd
+3
+2
+hello world
+27
+1
+abcdef
