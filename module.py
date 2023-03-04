@@ -1,5 +1,5 @@
 from enum import Enum
-from encrypt_methods import enc_dec_replace, enc_dec_shift
+from encrypt_methods import enc_dec_replace, enc_dec_shift, enc_dec_replace_num
 
 
 class Node:
@@ -64,6 +64,10 @@ class Text:
             self.key = Type.shift
             self.obj = Shift()
             Shift.read_from(self.obj, stream, self.line_symbol)
+        elif k == 3:
+            self.key = Type.replacement_by_num
+            self.obj = ReplaceNum()
+            ReplaceNum.read_from(self.obj, stream, self.line_symbol)
         else:
             return 0
 
@@ -78,6 +82,10 @@ class Text:
             stream.write('[Shift method]\n')
             stream.write(f'String: {self.line_symbol}\n')
             Shift.write_to(self.obj, stream)
+        elif self.key == Type.replacement_by_num:
+            stream.write('[Replacement by numbers method]\n')
+            stream.write(f'String: {self.line_symbol}\n')
+            ReplaceNum.write_to(self.obj, stream)
         else:
             stream.write('Error type\n')
 
@@ -106,6 +114,36 @@ class Shift:
         stream.write(f'Key = {self.key}\nEncrypt message : {self.encrypt_line}\n')
 
 
+class ReplaceNum:
+    def __init__(self):
+        self.encrypt_line = None
+
+    def read_from(self, stream, line):
+        self.encrypt_line = enc_dec_replace_num(line)
+
+    def write_to(self, stream):
+        stream.write(f'Encrypt message: {self.encrypt_line}\n')
+
+
 class Type(Enum):
     replacement = 1
     shift = 2
+    replacement_by_num = 3
+
+if __name__ == '__main__':
+
+    infile = 'in.txt'
+    outfile = 'out.txt'
+
+    input_file = open(infile, "r")
+    print('Start')
+
+    cont = Container()
+    cont.read_from(input_file)
+
+    print('Filled container')
+
+    output_file = open(outfile, "w")
+    cont.write_to(output_file)
+
+    cont.clear()
