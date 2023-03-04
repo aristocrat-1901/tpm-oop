@@ -1,9 +1,3 @@
-alphabet = {'a': 'z', 'b': 'x', 'c': 'y', 'e': 'v', 'd': 'w', 'g': 't', 'f': 'u', 'i': 'r', 'h': 's', 'k': 'p',
-            'j': 'q', 'm': 'n', 'l': 'o',
-            'o': 'l', 'n': 'm', 'q': 'j', 'p': 'k', 's': 'h', 'r': 'i', 'u': 'f', 't': 'g', 'w': 'd', 'v': 'e',
-            'y': 'c',
-            'x': 'b',
-            'z': 'a'}
 ENG_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 RUS_LETTERS = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789'
 
