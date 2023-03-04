@@ -50,12 +50,14 @@ class Text:
         self.line_symbol = None  # строка символов
         self.key = None  # номер способа шифрования
         self.obj = None  # способ шифрования
+        self.author = None  # владелец строки
 
     def read_from(self, stream, line):
         k = int(line)
 
         # text = Text()
         self.line_symbol = stream.readline().rstrip('\n')
+        self.author = stream.readline().rstrip('\n')
         if k == 1:
             self.key = Type.replacement
             self.obj = Replace()
@@ -73,10 +75,12 @@ class Text:
         if self.key == Type.replacement:
             stream.write('[Replacement method]\n')
             stream.write(f'String: {self.line_symbol}\n')
+            stream.write(f'Author: {self.author}\n')
             Replace.write_to(self.obj, stream)
         elif self.key == Type.shift:
             stream.write('[Shift method]\n')
             stream.write(f'String: {self.line_symbol}\n')
+            stream.write(f'Author: {self.author}\n')
             Shift.write_to(self.obj, stream)
         else:
             stream.write('Error type\n')

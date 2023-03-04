@@ -1,19 +1,23 @@
 Container has 4 elements
 
 [Replacement method]
-String: абв
-Encrypt message: ذرز
+String: It is secret message
+Author: Me
+Encrypt message: 1q 1r r57s5q x5rr935
 [Shift method]
 String: abcd
+Author: Denis
 Key = 3
 Encrypt message : defg
 [Shift method]
 String: hello world
+Author: Roma
 Key = 27
 Encrypt message : 85ccf nfic4
 [Replacement method]
-String: abcdef
-Encrypt message: 987654
+String: abcdzyx
+Author: Pasha
+Encrypt message: 9876klm
 
 Container has 0 elements
 
