@@ -129,21 +129,3 @@ class Type(Enum):
     replacement = 1
     shift = 2
     replacement_by_num = 3
-
-if __name__ == '__main__':
-
-    infile = 'in.txt'
-    outfile = 'out.txt'
-
-    input_file = open(infile, "r")
-    print('Start')
-
-    cont = Container()
-    cont.read_from(input_file)
-
-    print('Filled container')
-
-    output_file = open(outfile, "w")
-    cont.write_to(output_file)
-
-    cont.clear()

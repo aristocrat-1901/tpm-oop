@@ -18,3 +18,5 @@ Encrypt message: 987654
 String: abc
 Encrypt message: 979899
 
+Container has 0 elements
+
