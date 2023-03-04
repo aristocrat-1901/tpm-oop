@@ -3,6 +3,13 @@ from module import Container
 
 
 def main():
+    if len(sys.argv) != 3:
+        print('\nФайлы ввода/вывода не выбраны! Будут использованы стандартные in.txt и out.txt\n')
+        infile = 'in.txt'
+        outfile = 'out.txt'
+    else:
+        infile = sys.argv[1]
+        outfile = sys.argv[2]
     input_file = open(sys.argv[1], "r")
 
     print('Start')
