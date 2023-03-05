@@ -73,13 +73,18 @@ class Text:
         if self.key == Type.replacement:
             stream.write('[Replacement method]\n')
             stream.write(f'String: {self.line_symbol}\n')
+            stream.write(f'String length: {self.number_of_symbols()}\n')
             Replace.write_to(self.obj, stream)
         elif self.key == Type.shift:
             stream.write('[Shift method]\n')
             stream.write(f'String: {self.line_symbol}\n')
+            stream.write(f'String length: {self.number_of_symbols()}\n')
             Shift.write_to(self.obj, stream)
         else:
             stream.write('Error type\n')
+
+    def number_of_symbols(self):
+        return len(self.line_symbol)
 
 
 class Replace:
