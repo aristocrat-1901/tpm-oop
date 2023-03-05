@@ -39,3 +39,10 @@ def enc_dec_shift(text, key, mode='enc'):
         enc_dec_text += result
 
     return enc_dec_text
+
+
+def enc_dec_replace_num(text):
+    enc_dec_text = ''
+    for letter in text:
+        enc_dec_text += str(ord(letter))
+    return enc_dec_text

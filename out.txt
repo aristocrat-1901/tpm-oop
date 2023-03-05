@@ -1,4 +1,4 @@
-Container has 4 elements
+Container has 5 elements
 
 [Replacement method]
 String: абв
@@ -14,6 +14,9 @@ Encrypt message : 85ccf nfic4
 [Replacement method]
 String: abcdef
 Encrypt message: 987654
+[Replacement by numbers method]
+String: abc
+Encrypt message: 979899
 
 Container has 0 elements
 
