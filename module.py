@@ -44,6 +44,16 @@ class Container:
                 n = n.next
             stream.write('\n')
 
+    def write_to_replace(self, stream):
+        print("Only replacement method")
+
+        if self.start_node != None:
+            n = self.start_node
+            while n:
+                n.data.write_to_replace(stream)
+                n = n.next
+            # stream.write('\n')
+
 
 class Text:
     def __init__(self):
@@ -78,6 +88,16 @@ class Text:
             stream.write('[Shift method]\n')
             stream.write(f'String: {self.line_symbol}\n')
             Shift.write_to(self.obj, stream)
+        else:
+            stream.write('Error type\n')
+
+    def write_to_replace(self, stream):
+        if self.key == Type.replacement:
+            stream.write('[Replacement method]\n')
+            stream.write(f'String: {self.line_symbol}\n')
+            Replace.write_to(self.obj, stream)
+        elif self.key == Type.shift:
+            pass
         else:
             stream.write('Error type\n')
 
