@@ -1,5 +1,5 @@
 from enum import Enum
-from encrypt_methods import enc_dec_replace, enc_dec_shift, enc_dec_replace_num
+from encrypt_methods import enc_dec_replace, enc_dec_shift
 
 
 class Node:
@@ -58,6 +58,16 @@ class Container:
                 n1 = n1.next
                 n2 = self.start_node
 
+    def write_to_replace(self, stream):
+        print("Only replacement method")
+
+        if self.start_node != None:
+            n = self.start_node
+            while n:
+                n.data.write_to_replace(stream)
+                n = n.next
+            # stream.write('\n')
+
 
 class Text:
     def __init__(self):
@@ -108,6 +118,16 @@ class Text:
             stream.write(f'Author: {self.author}\n')
             stream.write(f'String length: {self.number_of_symbols()}\n')
             ReplaceNum.write_to(self.obj, stream)
+        else:
+            stream.write('Error type\n')
+
+    def write_to_replace(self, stream):
+        if self.key == Type.replacement:
+            stream.write('[Replacement method]\n')
+            stream.write(f'String: {self.line_symbol}\n')
+            Replace.write_to(self.obj, stream)
+        elif self.key == Type.shift:
+            pass
         else:
             stream.write('Error type\n')
 

@@ -20,7 +20,8 @@ def main():
     print('Filled container')
     cont.sort()
     output_file = open(outfile, "w")
-    cont.write_to(output_file)
+    #cont.write_to(output_file)
+    cont.write_to_replace(output_file)
 
     cont.clear()
 
