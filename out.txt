@@ -1,23 +1,23 @@
 Container has 4 elements
 
-[Replacement method]
-String: It is secret message
-String length: 20
-Encrypt message: 1q 1r r57s5q x5rr935
 [Shift method]
 String: abcd
 String length: 4
 Key = 3
 Encrypt message : defg
+[Replacement method]
+String: abcdef
+String length: 6
+Encrypt message: 987654
 [Shift method]
 String: hello world
 String length: 11
 Key = 27
 Encrypt message : 85ccf nfic4
 [Replacement method]
-String: abcdef
-String length: 6
-Encrypt message: 987654
+String: It is secret message
+String length: 20
+Encrypt message: 1q 1r r57s5q x5rr935
 
 Container has 0 elements
 

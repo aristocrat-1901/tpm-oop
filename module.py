@@ -44,6 +44,20 @@ class Container:
                 n = n.next
             stream.write('\n')
 
+    def sort(self):
+        if self.start_node is None:
+            print('Empty list')
+        else:
+            n1 = self.start_node
+            n2 = self.start_node.next
+            while n1 is not None:
+                while n2 is not None:
+                    if n1.data.number_of_symbols() < n2.data.number_of_symbols():
+                        n1.data, n2.data = n2.data, n1.data
+                    n2 = n2.next
+                n1 = n1.next
+                n2 = self.start_node
+
 
 class Text:
     def __init__(self):

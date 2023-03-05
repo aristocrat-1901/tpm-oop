@@ -18,7 +18,7 @@ def main():
     cont.read_from(input_file)
 
     print('Filled container')
-
+    cont.sort()
     output_file = open(outfile, "w")
     cont.write_to(output_file)
 
