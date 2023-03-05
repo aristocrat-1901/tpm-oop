@@ -91,6 +91,8 @@ class Text:
         elif self.key == Type.replacement_by_num:
             stream.write('[Replacement by numbers method]\n')
             stream.write(f'String: {self.line_symbol}\n')
+            stream.write(f'Author: {self.author}\n')
+            stream.write(f'String length: {self.number_of_symbols()}\n')
             ReplaceNum.write_to(self.obj, stream)
         else:
             stream.write('Error type\n')

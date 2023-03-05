@@ -12,3 +12,6 @@ Roma
 1
 abcdef
 Pasha
+3
+it is new method
+Vasily
