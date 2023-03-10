@@ -31,28 +31,29 @@ class Container:
     def read_from(self, stream):
         while line := stream.readline():
             text = Text()
-            item = text.read_from(stream, line)
-            self.add(item)
+            item = text.read_from(line)
+            if item is not None:
+                self.add(item)
 
     def write_to(self, stream):
         stream.write(f'Container has {self.size} elements\n\n')
 
-        if self.start_node != None:
+        if self.start_node is not None:
             n = self.start_node
             while n:
-                Text.write_to(n.data, stream)
+                n.data.write_to(stream)
                 n = n.next
             stream.write('\n')
 
     def sort(self):
         if self.start_node is None:
-            print('Empty list')
+            print('Sorting not possible. Empty list')
         else:
             n1 = self.start_node
             n2 = self.start_node.next
             while n1 is not None:
                 while n2 is not None:
-                    if n1.data.number_of_symbols() < n2.data.number_of_symbols():
+                    if n1.data.number_of_symbols() < n2.data.number_of_symbols():  # > сортировка по убыванию длины строк
                         n1.data, n2.data = n2.data, n1.data
                     n2 = n2.next
                 n1 = n1.next
@@ -61,12 +62,12 @@ class Container:
     def write_to_replace(self, stream):
         print("Only replacement method")
 
-        if self.start_node != None:
+        if self.start_node is not None:
             n = self.start_node
             while n:
                 n.data.write_to_replace(stream)
                 n = n.next
-            # stream.write('\n')
+            stream.write('\n')
 
 
 class Text:
@@ -76,26 +77,27 @@ class Text:
         self.obj = None  # способ шифрования
         self.author = None  # владелец строки
 
-    def read_from(self, stream, line):
-        k = int(line)
+    def read_from(self, line):
+        list_param = line.rstrip('\n').split('; ')
 
-        # text = Text()
-        self.line_symbol = stream.readline().rstrip('\n')
-        self.author = stream.readline().rstrip('\n')
+        k = int(list_param[0])
+        self.line_symbol = list_param[1]
+        self.author = list_param[2]
         if k == 1:
             self.key = Type.replacement
             self.obj = Replace()
-            Replace.read_from(self.obj, stream, self.line_symbol)
+            Replace.read_from(self.obj, self.line_symbol)
         elif k == 2:
             self.key = Type.shift
             self.obj = Shift()
-            Shift.read_from(self.obj, stream, self.line_symbol)
+            Shift.read_from(self.obj, list_param[3], self.line_symbol)
         elif k == 3:
             self.key = Type.replacement_by_num
             self.obj = ReplaceNum()
-            ReplaceNum.read_from(self.obj, stream, self.line_symbol)
+            ReplaceNum.read_from(self.obj, self.line_symbol)
         else:
-            return 0
+            print(f"Недопустимый тип метода {k}")
+            return
 
         return self
 
@@ -143,7 +145,7 @@ class Replace:
     def __init__(self):
         self.encrypt_line = None
 
-    def read_from(self, stream, line):
+    def read_from(self, line):
         self.encrypt_line = enc_dec_replace(line)
 
     def write_to(self, stream):
@@ -155,8 +157,8 @@ class Shift:
         self.key = None
         self.encrypt_line = None
 
-    def read_from(self, stream, line):
-        self.key = int(stream.readline())
+    def read_from(self, key, line):
+        self.key = int(key)
         self.encrypt_line = enc_dec_shift(line, self.key)
 
     def write_to(self, stream):
@@ -167,7 +169,7 @@ class ReplaceNum:
     def __init__(self):
         self.encrypt_line = None
 
-    def read_from(self, stream, line):
+    def read_from(self, line):
         self.encrypt_line = enc_dec_replace_num(line)
 
     def write_to(self, stream):
