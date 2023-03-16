@@ -1,0 +1,11 @@
+[Replacement method]
+String: It is secret message
+Author: Me
+String length: 20
+Encrypt message: 1q 1r r57s5q x5rr935
+[Replacement method]
+String: abcdef
+Author: Pasha
+String length: 6
+Encrypt message: 987654
+

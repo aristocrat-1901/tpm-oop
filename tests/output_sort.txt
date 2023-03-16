@@ -1,0 +1,30 @@
+Container has 5 elements
+
+[Shift method]
+String: abcd
+Author: Denis
+String length: 4
+Key = 3
+Encrypt message : defg
+[Replacement method]
+String: abcdef
+Author: Pasha
+String length: 6
+Encrypt message: 987654
+[Shift method]
+String: hello world
+Author: Roma
+String length: 11
+Key = 27
+Encrypt message : 85ccf nfic4
+[Replacement by numbers method]
+String: it is new method
+Author: Vasily
+String length: 16
+Encrypt message: 105116321051153211010111932109101116104111100
+[Replacement method]
+String: It is secret message
+Author: Me
+String length: 20
+Encrypt message: 1q 1r r57s5q x5rr935
+

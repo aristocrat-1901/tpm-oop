@@ -1,0 +1,5 @@
+1; It is secret message; Me
+2; abcd; Denis; 3
+2; hello world; Roma; 27
+1; abcdef; Pasha
+3; it is new method; Vasily
