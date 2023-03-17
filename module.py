@@ -98,10 +98,14 @@ class Text:
             self.key = Type.shift
             self.obj = Shift()
             try:
-                Shift.read_from(self.obj, list_param[3], self.line_symbol)
+                key = int(list_param[3])
             except LookupError:
-                print("Для 2 метода задан некорректный ключ!")
+                print("Для 2 метода не задан ключ!")
                 return
+            except ValueError:
+                print("Ключ для 2 метода должен быть числом!")
+                return
+            Shift.read_from(self.obj, key, self.line_symbol)
         elif k == 3:
             self.key = Type.replacement_by_num
             self.obj = ReplaceNum()
@@ -179,11 +183,7 @@ class Shift:
         self.encrypt_line = None
 
     def read_from(self, key, line):
-        try:
-            self.key = int(key)
-        except ValueError:
-            print('Ключ для 2 метода должен быть числом!')
-            return
+        self.key = key
         self.encrypt_line = enc_dec_shift(line, self.key)
 
     def write_to(self, stream):

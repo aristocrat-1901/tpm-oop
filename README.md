@@ -20,3 +20,6 @@ If you don't specify files, the program will use the default values:\
 2. Line;
 3. Line author;
 4. Key - If the method type is 2;
+
+### Pytest
+To run tests, you need to go to the folder `tests` and write in the console `pytest`

@@ -54,7 +54,7 @@ def test_write_to_replace(line, author, meth):
 
     length = text.number_of_symbols()
     text.write_to_replace(output)
-
+    test_str = ''
     output.seek(0)
     if meth == Type.replacement:
         test_str = f'[Replacement method]\n' \
@@ -62,8 +62,6 @@ def test_write_to_replace(line, author, meth):
                    f'Author: {author}\n' \
                    f'String length: {length}\n' \
                    f'Encrypt message: {text.obj.encrypt_line}\n'
-    else:
-        test_str = 'Error type\n'
 
     assert output.read() == test_str
 
