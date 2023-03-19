@@ -30,7 +30,8 @@ def main():
         print(f'Ошибка открытия файла {outfile}')
         sys.exit(1)
     cont.write_to(output_file)
-    #cont.write_to_replace(output_file) # запись в файл только одного метода Replace
+    # cont.write_to_replace(output_file) # запись в файл только одного метода Replace
+    cont.check_texts()
 
     cont.clear()
     print('Empty container')

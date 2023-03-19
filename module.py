@@ -54,11 +54,24 @@ class Container:
             n2 = self.start_node.next
             while n1 is not None:
                 while n2 is not None:
-                    if n1.data.number_of_symbols() < n2.data.number_of_symbols():  # > сортировка по убыванию длины строк
-                        n1.data, n2.data = n2.data, n1.data
+                    if n1.data.number_of_symbols() < n2.data.number_of_symbols():
+                        n1.data, n2.data = n2.data, n1.data  # > сортировка по убыванию длины строк
                     n2 = n2.next
                 n1 = n1.next
                 n2 = self.start_node
+
+    def check_texts(self):
+        texts_1 = []
+        n = self.start_node
+        while n is not None:
+            texts_1.append(n.data)
+            n = n.next
+
+        texts_2 = texts_1.copy()
+
+        for text_1 in texts_1:
+            for text_2 in texts_2:
+                Text.check_texts(text_1.obj, text_2.obj)
 
     def write_to_replace(self, stream):
         print("Only replacement method")
@@ -149,6 +162,43 @@ class Text:
                 sys.exit(1)
         else:
             stream.write('Ошибка при записи! Некорректный тип метода!\n')
+
+    @staticmethod
+    def check_texts(text_1, text_2):
+        match text_1, text_2:
+            case Replace(), Replace():
+                print("Шифрование одного типа: Replace and Replace")
+
+            case Replace(), Shift():
+                print("Шифрование разного типа: Replace and Shift")
+
+            case Replace(), ReplaceNum():
+                print("Шифрование разного типа: Replace and ReplaceNum")
+
+            case Shift(), Replace():
+                print("Шифрование разного типа: Shift and Replace")
+
+            case Shift(), Shift():
+                print("Шифрование одного типа: Shift and Shift")
+
+            case Shift(), ReplaceNum():
+                print("Шифрование разного типа: Shift and ReplaceNum")
+
+            case ReplaceNum(), Replace():
+                print("Шифрование разного типа: ReplaceNum and Replace")
+
+            case ReplaceNum(), Shift():
+                print("Шифрование разного типа: ReplaceNum and Shift")
+
+            case ReplaceNum(), ReplaceNum():
+                print("Шифрование одного типа: ReplaceNum and ReplaceNum")
+
+            case _:
+                print('Неизвестный тип')
+                return
+
+        print(f"Первый: {text_1}, второй: {text_2}")
+        print()
 
     def write_to_replace(self, stream):
         if self.key == Type.replacement:
